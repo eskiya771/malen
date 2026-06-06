@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Malen">
+  <rect width="512" height="512" rx="96" fill="#f9f6ef"/>
+  <path d="M130 354c66 24 114 11 149-40 19-28 42-39 73-32" fill="none" stroke="#151515" stroke-width="38" stroke-linecap="round"/>
+  <path d="M322 128l68 68-140 140-82 22 22-82 132-148z" fill="#2864d9"/>
+  <path d="M322 128l68 68" fill="none" stroke="#151515" stroke-width="22" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#f7f4ee">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Malen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Malen</title>
+    <base href="%BASE_HREF%">
+    <script>
+      window.MALEN_BASE = "%MALEN_BASE%";
+    </script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/icon-192.svg">
+    <link rel="stylesheet" href="styles.css?v=1.0.0">
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Malprogramm">
+      <canvas id="drawingCanvas" aria-label="Zeichenflaeche"></canvas>
+
+      <section class="toolbar" aria-label="Werkzeuge">
+        <div class="tool-group colors" aria-label="Farben">
+          <button class="color-button active" data-color="#111111" style="--swatch: #111111" aria-label="Schwarz"></button>
+          <button class="color-button" data-color="#d9342b" style="--swatch: #d9342b" aria-label="Rot"></button>
+          <button class="color-button" data-color="#2864d9" style="--swatch: #2864d9" aria-label="Blau"></button>
+          <button class="color-button" data-color="#239657" style="--swatch: #239657" aria-label="Gruen"></button>
+          <button class="color-button" data-color="#f2c94c" style="--swatch: #f2c94c" aria-label="Gelb"></button>
+        </div>
+
+        <label class="size-control" aria-label="Pinselgroesse">
+          <span id="sizeValue">8</span>
+          <input id="brushSize" type="range" min="1" max="44" value="8">
+        </label>
+
+        <div class="tool-group">
+          <button id="undoButton" class="tool-button" type="button" aria-label="Rueckgaengig">↶</button>
+          <button id="clearButton" class="tool-button" type="button" aria-label="Leeren">×</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="path.js?v=1.0.0"></script>
+    <script src="app.js?v=1.0.0" type="module"></script>
+    <script src="pwa.js?v=1.0.0"></script>
+  </body>
+</html>

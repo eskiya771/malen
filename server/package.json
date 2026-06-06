@@ -1,0 +1,13 @@
+{
+  "name": "malen-pwa-server",
+  "version": "1.0.0",
+  "description": "Installierbare iPad-Malprogramm-PWA mit Express-Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
