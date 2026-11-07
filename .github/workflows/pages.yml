@@ -1,0 +1,51 @@
+name: Publish GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Prepare static app
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import shutil
+          shutil.copytree("public", "_site")
+          base = os.environ["BASE_PATH"].rstrip("/")
+          index = pathlib.Path("_site/index.html")
+          html = index.read_text()
+          html = html.replace("%BASE_HREF%", base + "/").replace("%MALEN_BASE%", base)
+          assert "%BASE_HREF%" not in html and "%MALEN_BASE%" not in html
+          index.write_text(html)
+          pathlib.Path("_site/.nojekyll").touch()
+          PY
+          for file in _site/*.js; do node --check "$file"; done
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
